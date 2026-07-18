@@ -1,14 +1,14 @@
 // Data model representing the developer's career repository
 export const developerProfile = {
   name: "Sai Akshith Kendyala",
-  title: "Software Engineer",
+  title: "Software & AI Developer",
   subtitle: "AI & Full Stack Enthusiast",
   bio: "Building production-ready AI pipelines, scalable microservices, and immersive frontends. Focused on solving real-world challenges through elegant, high-throughput software design.",
   location: "Hyderabad, India",
-  email: "saiakshith.k@gmail.com",
-  github: "https://github.com/sai-akshith",
-  linkedin: "https://linkedin.com/in/sai-akshith-kendyala",
-  resumeUrl: "#", // Add resume download path or placeholder link
+  email: "akshithkendyala@gmail.com",
+  github: "https://github.com/akshithkendyala",
+  linkedin: "https://www.linkedin.com/in/sai-akshith-kendyala-309205360/",
+  resumeUrl: "C:\Users\akshi\OneDrive\Desktop\Akshith\Portfolio\public\Sai_Akshith_Resume_Enhanced.pdf", // Add resume download path or placeholder link
 };
 
 export const codingProfiles = [
