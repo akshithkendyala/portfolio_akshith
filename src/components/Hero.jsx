@@ -178,11 +178,11 @@ export default function Hero() {
       case "git log":
         output = [
           { text: "commit 2f9b10a2 (HEAD -> main, origin/main)", isSystem: true, color: "text-[#F2C744]" },
-          { text: "Author: Sai Akshith Kendyala <saiakshith.k@gmail.com>", isSystem: true },
+          { text: "Author: Sai Akshith Kendyala <akshithkendyala@gmail.com>", isSystem: true },
           { text: "Date:   Sat Jul 18 14:40:54 2026 +0530", isSystem: true },
           { text: "    Feat: Added contact portal and interactive terminal hooks", isSystem: true, color: "text-[#C9D1D9]" },
           { text: "\ncommit e45a278d", isSystem: true, color: "text-[#F2C744]" },
-          { text: "Author: Sai Akshith Kendyala <saiakshith.k@gmail.com>", isSystem: true },
+          { text: "Author: Sai Akshith Kendyala <akshithkendyala@gmail.com>", isSystem: true },
           { text: "Date:   Wed Jul 15 11:20:10 2026 +0530", isSystem: true },
           { text: "    Feat: Merged feature/subscription-intelligence and feature/legal-ai branches", isSystem: true, color: "text-[#C9D1D9]" }
         ];
