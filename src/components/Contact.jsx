@@ -111,7 +111,7 @@ export default function Contact() {
   };
 
   const contactLinks = [
-    { name: "Email", icon: Mail, label: developerProfile.email, url: `mailto:${developerProfile.email}`, color: "text-[#3FB950] bg-[#2ea44f]/5 border-[#2ea44f]/20 hover:border-[#3fb950]/50" },
+    { name: "Email", icon: Mail, label: developerProfile.email, url: `https://mail.google.com/mail/?view=cm&fs=1&to=${developerProfile.email}`, color: "text-[#3FB950] bg-[#2ea44f]/5 border-[#2ea44f]/20 hover:border-[#3fb950]/50" },
     { name: "LinkedIn", icon: Linkedin, label: "sai-akshith-kendyala", url: developerProfile.linkedin, color: "text-[#58A6FF] bg-[#58a6ff]/5 border-[#58a6ff]/20 hover:border-[#58a6ff]/50" },
     { name: "GitHub", icon: Github, label: "sai-akshith", url: developerProfile.github, color: "text-[#BC8CFF] bg-[#bc8cff]/5 border-[#bc8cff]/20 hover:border-[#bc8cff]/50" },
     { name: "Location", icon: MapPin, label: developerProfile.location, url: "#", color: "text-[#F2C744] bg-[#f2c744]/5 border-[#f2c744]/20 cursor-default" },
