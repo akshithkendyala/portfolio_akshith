@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gh-bg: #0D1117;
+  --color-gh-card: #161B22;
+  --color-gh-border: #30363D;
+  --color-gh-green: #2EA44F;
+  --color-gh-green-glow: #3FB950;
+  --color-gh-blue: #58A6FF;
+  --color-gh-purple: #BC8CFF;
+  --color-gh-text: #C9D1D9;
+  --color-gh-muted: #8B949E;
+  --color-gh-dark-border: #21262D;
+}
+
+:root {
+  --background: #0D1117;
+  --foreground: #C9D1D9;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #0D1117;
+  color: #C9D1D9;
+}
+
+body {
+  background-color: #0D1117;
+  color: #C9D1D9;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0D1117;
+}
+::-webkit-scrollbar-thumb {
+  background: #30363D;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8B949E;
+}
+
+/* Custom glow utility for timeline branch lines */
+.line-glow-green {
+  filter: drop-shadow(0 0 4px #3FB950);
+}
+.line-glow-blue {
+  filter: drop-shadow(0 0 4px #58A6FF);
+}
+.line-glow-purple {
+  filter: drop-shadow(0 0 4px #BC8CFF);
+}
+
+/* Blinking terminal cursor */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 18px;
+  background-color: #3FB950;
+  margin-left: 4px;
+  animation: cursor-blink 1s infinite;
+  vertical-align: middle;
+}
+
+/* Grid overlay background */
+.grid-overlay {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(48, 54, 61, 0.2) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(48, 54, 61, 0.2) 1px, transparent 1px);
+}
+
