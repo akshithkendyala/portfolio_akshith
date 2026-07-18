@@ -8,7 +8,7 @@ export const developerProfile = {
   email: "akshithkendyala@gmail.com",
   github: "https://github.com/akshithkendyala",
   linkedin: "https://www.linkedin.com/in/sai-akshith-kendyala-309205360/",
-  resumeUrl: "C:\Users\akshi\OneDrive\Desktop\Akshith\Portfolio\public\Sai_Akshith_Resume_Enhanced.pdf", // Add resume download path or placeholder link
+  resumeUrl: "/Portfolio_Akshith/Sai_Akshith_Resume_Enhanced.pdf", // Add resume download path or placeholder link
 };
 
 export const codingProfiles = [
