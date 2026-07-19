@@ -60,45 +60,96 @@ export default function Contact() {
     setPushLogs([]);
     setHasError(false);
 
-    const logSteps = [
+    // Initial git logging steps (writing, enumerating)
+    const initialSteps = [
       { text: "git push origin main", delay: 100 },
-      { text: "Enumerating objects: 5, done.", delay: 500 },
-      { text: "Counting objects: 100% (5/5), done.", delay: 900 },
-      { text: "Delta compression using up to 8 threads", delay: 1200 },
-      { text: "Compressing objects: 100% (3/3), done.", delay: 1500 },
-      { text: "Writing objects: 100% (5/5), 485 bytes | 485.00 KiB/s, done.", delay: 1800 },
-      { text: "Total 5 (delta 2), reused 0 (delta 0), pack-reused 0", delay: 2100 },
-      { text: "To https://github.com/sai-akshith/portfolio.git", delay: 2400 },
-      { text: "   2f9b10a2..7c93fa88  main -> main", delay: 2700 },
-      { text: "Branch 'main' set up to track remote branch 'main' from 'origin'.", delay: 2900 },
-      { text: "Done. Push complete. Message sent successfully!", delay: 3100, isSuccess: true }
+      { text: "Enumerating objects: 5, done.", delay: 400 },
+      { text: "Counting objects: 100% (5/5), done.", delay: 700 },
+      { text: "Delta compression using up to 8 threads", delay: 1000 },
+      { text: "Compressing objects: 100% (3/3), done.", delay: 1300 },
+      { text: "Writing objects: 100% (5/5), 485 bytes | 485.00 KiB/s, done.", delay: 1600 }
     ];
 
-    for (const step of logSteps) {
+    for (const step of initialSteps) {
       await new Promise((resolve) => {
         setTimeout(() => {
           setPushLogs((prev) => [...prev, step.text]);
           resolve();
-        }, step.delay - (logSteps[logSteps.indexOf(step) - 1]?.delay || 0));
+        }, step.delay - (initialSteps[initialSteps.indexOf(step) - 1]?.delay || 0));
       });
     }
 
-    // Trigger Confetti dynamically on client side
+    // Attempt actual Web3Forms API dispatch
     try {
-      const confetti = (await import("canvas-confetti")).default;
-      confetti({
-        particleCount: 80,
-        spread: 60,
-        origin: { y: 0.8 },
-        colors: ["#2ea44f", "#3fb950", "#58a6ff", "#bc8cff"]
+      const apiKey = developerProfile.web3formsKey || "YOUR_WEB3FORMS_ACCESS_KEY";
+      
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          access_key: apiKey,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `Portfolio Message from ${formData.name}`
+        })
       });
-    } catch (err) {
-      console.log("Confetti load failed", err);
-    }
 
-    setIsCompleted(true);
-    setIsPushing(false);
-    setFormData({ name: "", email: "", message: "" });
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        // Successful push
+        const successSteps = [
+          "Total 5 (delta 2), reused 0 (delta 0), pack-reused 0",
+          "To https://github.com/akshithkendyala/portfolio_akshith.git",
+          "   f009b1a..88de6e2  main -> main",
+          "Branch 'main' set up to track remote branch 'main' from 'origin'.",
+          "Done. Push complete. Message sent successfully!"
+        ];
+
+        for (const log of successSteps) {
+          await new Promise((resolve) => setTimeout(resolve, 300));
+          setPushLogs((prev) => [...prev, log]);
+        }
+
+        // Trigger Confetti
+        try {
+          const confetti = (await import("canvas-confetti")).default;
+          confetti({
+            particleCount: 80,
+            spread: 60,
+            origin: { y: 0.8 },
+            colors: ["#2ea44f", "#3fb950", "#58a6ff", "#bc8cff"]
+          });
+        } catch (err) {
+          console.log("Confetti load failed", err);
+        }
+
+        setIsCompleted(true);
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        // API key or submission error
+        throw new Error(data.message || "Failed submission");
+      }
+    } catch (error) {
+      // Print Git Push failure details in console logs
+      const errorSteps = [
+        "Connection socket timeout.",
+        `fatal: Web3Forms submission failed (${error.message || "Invalid Key"})`,
+        "error: failed to push some refs to 'https://github.com/akshithkendyala/portfolio_akshith.git'",
+        "hint: Please configure a valid 'web3formsKey' in src/data/portfolioData.js"
+      ];
+
+      for (const log of errorSteps) {
+        await new Promise((resolve) => setTimeout(resolve, 400));
+        setPushLogs((prev) => [...prev, log]);
+      }
+    } finally {
+      setIsPushing(false);
+    }
   };
 
   const handleFormSubmit = (e) => {

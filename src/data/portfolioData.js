@@ -9,6 +9,7 @@ export const developerProfile = {
   github: "https://github.com/akshithkendyala",
   linkedin: "https://www.linkedin.com/in/sai-akshith-kendyala-309205360/",
   resumeUrl: "https://drive.google.com/file/d/1d45dOfLyxNpgNqiJDMlRCepTlSbhJTNQ/view?usp=sharing", // Add resume download path or placeholder link
+  web3formsKey: "YOUR_WEB3FORMS_ACCESS_KEY", // Request a free key at https://web3forms.com
 };
 
 export const codingProfiles = [
