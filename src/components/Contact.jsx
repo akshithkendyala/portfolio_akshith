@@ -181,7 +181,7 @@ export default function Contact() {
             <div className="bg-[#21262D] px-5 py-4 border-b border-[#30363D] flex items-center justify-between font-mono text-xs text-[#8B949E]">
               <span>deployment_form.sh</span>
               <span className="text-[#8B949E] bg-[#30363D] px-2 py-0.5 rounded border border-[#8B949E]/10">
-                localhost:3000
+                akshithkendyala.github.io
               </span>
             </div>
 
