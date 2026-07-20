@@ -8,7 +8,7 @@ export const developerProfile = {
   email: "akshithkendyala@gmail.com",
   github: "https://github.com/akshithkendyala",
   linkedin: "https://www.linkedin.com/in/sai-akshith-kendyala-309205360/",
-  resumeUrl: "https://drive.google.com/file/d/1d45dOfLyxNpgNqiJDMlRCepTlSbhJTNQ/view?usp=sharing", // Add resume download path or placeholder link
+  resumeUrl: "https://drive.google.com/file/d/1M3xP77H5Zy-GSept6Mj2jyl2eiIScFre/view?usp=sharing", // Add resume download path or placeholder link
   web3formsKey: "099631a1-9534-4f9d-85e9-3b5fc4078ab0", // Request a free key at https://web3forms.com
 };
 
