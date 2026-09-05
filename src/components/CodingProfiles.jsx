@@ -213,7 +213,66 @@ export default function CodingProfiles() {
         };
       })();
 
-      const [ghData, lcData, gfgData] = await Promise.all([ghPromise, lcPromise, gfgPromise]);
+      // 4. Fetch CodeChef Live Stats
+      const ccPromise = (async () => {
+        try {
+          const endpoints = [
+            "https://www.codechef.com/users/akshith_ken",
+            "https://api.allorigins.win/raw?url=" + encodeURIComponent("https://www.codechef.com/users/akshith_ken"),
+            "https://api.codetabs.com/v1/proxy?quest=" + encodeURIComponent("https://www.codechef.com/users/akshith_ken")
+          ];
+
+          for (const ep of endpoints) {
+            try {
+              const controller = new AbortController();
+              const timer = setTimeout(() => controller.abort(), 3500);
+              const res = await fetch(ep, {
+                signal: controller.signal,
+                headers: { "User-Agent": "Mozilla/5.0" }
+              });
+              clearTimeout(timer);
+              if (!res.ok) continue;
+              const text = await res.text();
+              const ratingMatch = text.match(/class="rating-number"[^>]*>[\s\r\n]*([0-9]+)/i) || text.match(/\(Highest Rating\s*([0-9]+)\)/i) || text.match(/"rating":\s*"(\d+)"/i);
+              const divMatch = text.match(/\(Div\s*([0-9]+)\)/i);
+              const highestRatingMatch = text.match(/\(Highest Rating\s*([0-9]+)\)/i);
+
+              if (ratingMatch) {
+                const ratingNum = parseInt(ratingMatch[1], 10);
+                let stars = "1 ★";
+                if (ratingNum >= 2500) stars = "7 ★";
+                else if (ratingNum >= 2200) stars = "6 ★";
+                else if (ratingNum >= 2000) stars = "5 ★";
+                else if (ratingNum >= 1800) stars = "4 ★";
+                else if (ratingNum >= 1600) stars = "3 ★";
+                else if (ratingNum >= 1400) stars = "2 ★";
+                else stars = "1 ★";
+
+                return {
+                  id: "codechef",
+                  rating: `${ratingNum}`,
+                  division: divMatch ? `Div ${divMatch[1]}` : "Div 4",
+                  stars: stars,
+                  maxRating: highestRatingMatch ? highestRatingMatch[1] : `${ratingNum}`
+                };
+              }
+            } catch (err) {
+              // try next fallback
+            }
+          }
+        } catch (err) {
+          console.warn("CodeChef live sync fallback active:", err);
+        }
+        return {
+          id: "codechef",
+          rating: "1075",
+          division: "Div 4",
+          stars: "1 ★",
+          maxRating: "1075"
+        };
+      })();
+
+      const [ghData, lcData, gfgData, ccData] = await Promise.all([ghPromise, lcPromise, gfgPromise, ccPromise]);
 
       setProfiles(prev =>
         prev.map(p => {
@@ -256,6 +315,20 @@ export default function CodingProfiles() {
                 solved: gfgData.solved ?? p.stats.solved,
                 rank: gfgData.rank ?? p.stats.rank,
                 institute: "VCE"
+              }
+            };
+          }
+
+          if (p.id === "codechef" && ccData) {
+            return {
+              ...p,
+              isLiveSynced: true,
+              stats: {
+                ...p.stats,
+                rating: ccData.rating ?? p.stats.rating,
+                division: ccData.division ?? p.stats.division,
+                stars: ccData.stars ?? p.stats.stars,
+                maxRating: ccData.maxRating ?? p.stats.maxRating
               }
             };
           }

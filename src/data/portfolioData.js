@@ -66,7 +66,7 @@ export const codingProfiles = [
     name: "CodeChef",
     handle: "akshith_ken",
     url: "https://www.codechef.com/users/akshith_ken",
-    stats: { rating: "1450+", division: "Div 3", stars: "2 ★", solved: "45+" },
+    stats: { rating: "1075", division: "Div 4", stars: "1 ★", maxRating: "1075" },
     languages: [
       { name: "C++", percent: 85, color: "#f34b7d" },
       { name: "Python", percent: 15, color: "#3572A5" }
