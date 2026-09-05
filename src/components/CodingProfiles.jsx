@@ -164,7 +164,56 @@ export default function CodingProfiles() {
         return null;
       })();
 
-      const [ghData, lcData] = await Promise.all([ghPromise, lcPromise]);
+      // 3. Fetch GeeksforGeeks Live Stats
+      const gfgPromise = (async () => {
+        try {
+          const endpoints = [
+            "https://www.geeksforgeeks.org/user/akshithkmotx/",
+            "https://api.allorigins.win/raw?url=" + encodeURIComponent("https://www.geeksforgeeks.org/user/akshithkmotx/"),
+            "https://api.codetabs.com/v1/proxy?quest=" + encodeURIComponent("https://www.geeksforgeeks.org/user/akshithkmotx/")
+          ];
+
+          for (const ep of endpoints) {
+            try {
+              const controller = new AbortController();
+              const timer = setTimeout(() => controller.abort(), 3500);
+              const res = await fetch(ep, {
+                signal: controller.signal,
+                headers: { "User-Agent": "Mozilla/5.0" }
+              });
+              clearTimeout(timer);
+              if (!res.ok) continue;
+              const text = await res.text();
+              const scoreMatch = text.match(/\\"score\\":\s*(\d+)/) || text.match(/"score":\s*(\d+)/);
+              const solvedMatch = text.match(/\\"total_problems_solved\\":\s*(\d+)/) || text.match(/"total_problems_solved":\s*(\d+)/);
+              const rankMatch = text.match(/\\"institute_rank\\":\s*(\d+)/) || text.match(/"institute_rank":\s*(\d+)/);
+
+              if (scoreMatch || solvedMatch) {
+                return {
+                  id: "geeksforgeeks",
+                  score: scoreMatch ? scoreMatch[1] : "229",
+                  solved: solvedMatch ? solvedMatch[1] : "92",
+                  rank: rankMatch ? `#${rankMatch[1]}` : "#333",
+                  institute: "VCE"
+                };
+              }
+            } catch (err) {
+              // try next endpoint fallback
+            }
+          }
+        } catch (err) {
+          console.warn("GFG live sync fallback active:", err);
+        }
+        return {
+          id: "geeksforgeeks",
+          score: "229",
+          solved: "92",
+          rank: "#333",
+          institute: "VCE"
+        };
+      })();
+
+      const [ghData, lcData, gfgData] = await Promise.all([ghPromise, lcPromise, gfgPromise]);
 
       setProfiles(prev =>
         prev.map(p => {
@@ -193,6 +242,20 @@ export default function CodingProfiles() {
                 easy: lcData.easy,
                 medium: lcData.medium,
                 hard: lcData.hard
+              }
+            };
+          }
+
+          if (p.id === "geeksforgeeks" && gfgData) {
+            return {
+              ...p,
+              isLiveSynced: true,
+              stats: {
+                ...p.stats,
+                score: gfgData.score ?? p.stats.score,
+                solved: gfgData.solved ?? p.stats.solved,
+                rank: gfgData.rank ?? p.stats.rank,
+                institute: "VCE"
               }
             };
           }

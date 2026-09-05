@@ -202,7 +202,7 @@ export default function Hero() {
       case "cat about_me.md":
         output = [
           { text: "## About Me", isMarkdown: true, color: "text-[#3FB950] font-bold" },
-          { text: "I'm a computer science graduate from VIT specialized in machine learning and scalable web backend pipelines.", isSystem: true },
+          { text: "I'm a computer science graduate from Vardhaman College of Engineering (VCE) specialized in machine learning and scalable web backend pipelines.", isSystem: true },
           { text: "I love exploring systems-level architectures, optimizing deep learning parameters, and designing UI components.", isSystem: true }
         ];
         break;

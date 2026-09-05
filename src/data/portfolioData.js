@@ -29,7 +29,7 @@ export const codingProfiles = [
     name: "GeeksforGeeks",
     handle: "akshithkmotx",
     url: "https://www.geeksforgeeks.org/profile/akshithkmotx",
-    stats: { score: "120+", solved: "50+", rank: "Active", institute: "BVRIT" },
+    stats: { score: "229", solved: "92", rank: "#333", institute: "VCE" },
     languages: [
       { name: "C++", percent: 70, color: "#f34b7d" },
       { name: "Python", percent: 20, color: "#3572A5" },
@@ -257,7 +257,7 @@ export const educationHistory = [
     version: "v3.0",
     stage: "Bachelor of Technology",
     title: "Computer Science & Engineering",
-    institution: "Vellore Institute of Technology (VIT)",
+    institution: "Vardhaman College of Engineering (VCE)",
     period: "2022 - 2026",
     details: "Focused on Algorithms, Deep Learning, Databases, and Software Architectures. Active member of competitive coding clubs.",
     badgeColor: "bg-green-950 text-green-300 border-green-800"
