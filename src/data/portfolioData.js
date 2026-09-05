@@ -16,78 +16,79 @@ export const codingProfiles = [
   {
     id: "github",
     name: "GitHub",
-    handle: "sai-akshith",
-    url: "https://github.com/sai-akshith",
-    stats: { repositories: 42, contributions: "1,248+", stars: 124, followers: 85 },
+    handle: "akshithkendyala",
+    url: "https://github.com/akshithkendyala",
+    stats: { repositories: 20, contributions: "111+", stars: 5, followers: 2 },
     languages: [
-      { name: "Python", percent: 45, color: "#3572A5" },
+      { name: "Python", percent: 55, color: "#3572A5" },
       { name: "TypeScript", percent: 25, color: "#3178C6" },
-      { name: "C++", percent: 18, color: "#f34b7d" },
-      { name: "JavaScript", percent: 12, color: "#f1e05a" }
+      { name: "C++", percent: 15, color: "#f34b7d" },
+      { name: "JavaScript", percent: 5, color: "#f1e05a" }
     ],
-    activityPattern: [8, 5, 3, 6, 2, 7, 9, 4, 1, 8, 10, 5, 3, 6, 4, 8, 12, 7, 5, 3, 2, 4, 9, 6] // Fake grid simulation
+    activityPattern: [0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
   },
   {
     id: "leetcode",
     name: "LeetCode",
-    handle: "sai_akshith",
-    url: "https://leetcode.com/sai_akshith",
-    stats: { solved: "450+", rating: "1850+", badge: "Knight", globalRank: "Top 4.2%" },
-    languages: [
-      { name: "C++", percent: 60, color: "#f34b7d" },
-      { name: "Python", percent: 35, color: "#3572A5" },
-      { name: "JavaScript", percent: 5, color: "#f1e05a" }
-    ],
-    activityPattern: [12, 15, 8, 9, 14, 10, 7, 8, 13, 11, 15, 12, 9, 8, 6, 5, 11, 14, 12, 9, 8, 7, 6, 5]
-  },
-  {
-    id: "codeforces",
-    name: "Codeforces",
-    handle: "sai_akshith",
-    url: "https://codeforces.com/profile/sai_akshith",
-    stats: { rating: "1542 (Specialist)", maxRating: "1610", rank: "Specialist", solved: "200+" },
-    languages: [
-      { name: "C++", percent: 100, color: "#f34b7d" }
-    ],
-    activityPattern: [4, 2, 0, 5, 8, 2, 0, 3, 5, 2, 0, 6, 4, 1, 0, 2, 8, 3, 0, 4, 2, 0, 5, 1]
-  },
-  {
-    id: "codechef",
-    name: "CodeChef",
-    handle: "sai_akshith_k",
-    url: "https://www.codechef.com/users/sai_akshith_k",
-    stats: { rating: "1720 (3-Star)", maxRating: "1785", division: "Div 2", stars: "3 ★" },
+    handle: "JEUlQ5Wqzu",
+    url: "https://leetcode.com/u/JEUlQ5Wqzu/",
+    stats: { solved: "106+", easy: "56", medium: "47", hard: "3" },
     languages: [
       { name: "C++", percent: 85, color: "#f34b7d" },
       { name: "Python", percent: 15, color: "#3572A5" }
     ],
-    activityPattern: [3, 0, 2, 4, 1, 5, 0, 3, 2, 0, 4, 1, 6, 0, 3, 2, 0, 4, 1, 5, 0, 3, 2, 0]
+    activityPattern: [1, 3, 2, 0, 1, 0, 3, 1, 1, 3, 1, 1, 1, 4, 8, 2, 1, 13, 1, 1, 1, 4, 1, 1]
+  },
+  {
+    id: "linkedin",
+    name: "LinkedIn",
+    handle: "sai-akshith-kendyala",
+    url: "https://www.linkedin.com/in/sai-akshith-kendyala-309205360/",
+    stats: { connections: "500+", network: "Active", role: "SDE / AI", status: "Open to Work" },
+    languages: [
+      { name: "Python", percent: 40, color: "#3572A5" },
+      { name: "React / Next", percent: 35, color: "#61dafb" },
+      { name: "PyTorch", percent: 25, color: "#ee4c2c" }
+    ],
+    activityPattern: [4, 6, 5, 8, 3, 7, 6, 9, 5, 7, 8, 4, 6, 8, 7, 5, 9, 8, 6, 7, 8, 9, 6, 8]
+  },
+  {
+    id: "codechef",
+    name: "CodeChef",
+    handle: "akshith_ken",
+    url: "https://www.codechef.com/users/akshith_ken",
+    stats: { rating: "1450+", division: "Div 3", stars: "2 ★", solved: "45+" },
+    languages: [
+      { name: "C++", percent: 85, color: "#f34b7d" },
+      { name: "Python", percent: 15, color: "#3572A5" }
+    ],
+    activityPattern: [2, 0, 1, 3, 0, 2, 0, 1, 2, 0, 3, 1, 0, 2, 0, 1, 0, 3, 1, 2, 0, 1, 2, 0]
   },
   {
     id: "hackerrank",
     name: "HackerRank",
-    handle: "sai_akshith",
-    url: "https://www.hackerrank.com/sai_akshith",
-    stats: { badges: "Problem Solving (5 ★)", python: "5 ★", cpp: "5 ★", sql: "4 ★" },
+    handle: "akshithkendyala",
+    url: "https://www.hackerrank.com/profile/akshithkendyala",
+    stats: { problemSolving: "5 ★", python: "5 ★", cpp: "5 ★", sql: "4 ★" },
     languages: [
-      { name: "C++", percent: 40, color: "#f34b7d" },
-      { name: "Python", percent: 40, color: "#3572A5" },
+      { name: "Python", percent: 45, color: "#3572A5" },
+      { name: "C++", percent: 35, color: "#f34b7d" },
       { name: "SQL", percent: 20, color: "#e38c00" }
     ],
-    activityPattern: [6, 4, 5, 3, 7, 2, 8, 4, 6, 5, 3, 7, 2, 8, 4, 6, 5, 3, 7, 2, 8, 4, 6, 5]
+    activityPattern: [4, 3, 5, 2, 6, 1, 5, 3, 4, 5, 2, 6, 1, 5, 3, 4, 5, 2, 6, 1, 5, 3, 4, 5]
   },
   {
     id: "geeksforgeeks",
     name: "GeeksforGeeks",
-    handle: "sai_akshith",
-    url: "https://auth.geeksforgeeks.org/user/sai_akshith",
-    stats: { score: "1250+", solved: "320+", rank: "College Rank: 3", articles: 2 },
+    handle: "akshithkmotx",
+    url: "https://www.geeksforgeeks.org/profile/akshithkmotx",
+    stats: { score: "120+", solved: "50+", rank: "Active", institute: "BVRIT" },
     languages: [
       { name: "C++", percent: 70, color: "#f34b7d" },
-      { name: "Java", percent: 20, color: "#b07219" },
-      { name: "Python", percent: 10, color: "#3572A5" }
+      { name: "Python", percent: 20, color: "#3572A5" },
+      { name: "Java", percent: 10, color: "#b07219" }
     ],
-    activityPattern: [5, 5, 4, 3, 6, 7, 2, 1, 4, 5, 3, 6, 7, 2, 1, 4, 5, 3, 6, 7, 2, 1, 4, 5]
+    activityPattern: [3, 2, 4, 1, 5, 2, 0, 1, 3, 4, 2, 5, 1, 0, 3, 2, 4, 1, 5, 2, 0, 1, 3, 4]
   }
 ];
 
@@ -196,7 +197,7 @@ export const projects = [
     branchName: "feature/vision-ai",
     description: "A state-of-the-art computer vision platform designed for real-time facial feature mapping, alignment, and facial authentication.",
     techStack: ["PyTorch", "Python", "React", "Docker", "FastAPI"],
-    githubUrl: "https://github.com/sai-akshith/multimodal-vision-ai",
+    githubUrl: "https://github.com/akshithkendyala/multimodal-vision-ai",
     liveDemoUrl: "#",
     achievements: [
       "Engineered high-accuracy landmark alignment under high rotation variations (up to 45 degrees).",
@@ -210,7 +211,7 @@ export const projects = [
     branchName: "feature/attendance-system",
     description: "An automated, camera-driven attendance logging application leveraging facial recognition and edge computing to eliminate manual roll calls.",
     techStack: ["Node.js", "Express", "PostgreSQL", "React", "OpenCV"],
-    githubUrl: "https://github.com/sai-akshith/smart-attendance-system",
+    githubUrl: "https://github.com/akshithkendyala/smart-attendance-system",
     liveDemoUrl: "#",
     achievements: [
       "Engineered automated deduplication algorithms that guarantee zero double-counting of students.",
@@ -224,7 +225,7 @@ export const projects = [
     branchName: "feature/legal-ai",
     description: "A domain-specialized NLP system that ingests legal contracts, performs named entity recognition, and spits out clean summary briefings.",
     techStack: ["Transformers", "HuggingFace", "Python", "Next.js", "Tailwind CSS"],
-    githubUrl: "https://github.com/sai-akshith/legal-brief-ai",
+    githubUrl: "https://github.com/akshithkendyala/legal-brief-ai",
     liveDemoUrl: "#",
     achievements: [
       "Fine-tuned LLMs on 50,000+ legal documents using LoRA and PEFT optimization techniques.",
@@ -238,7 +239,7 @@ export const projects = [
     branchName: "feature/subscription-intelligence",
     description: "A business intelligence SaaS dashboard analyzing customer churn, monthly recurring revenue, and cohort retention models.",
     techStack: ["React", "Go", "PostgreSQL", "Tailwind CSS", "Recharts"],
-    githubUrl: "https://github.com/sai-akshith/sub-intel-analytics",
+    githubUrl: "https://github.com/akshithkendyala/sub-intel-analytics",
     liveDemoUrl: "#",
     achievements: [
       "Optimized analytical SQL queries, improving table scanning speeds by 300%.",

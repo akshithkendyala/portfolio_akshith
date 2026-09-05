@@ -9,7 +9,7 @@ export default function TerminalBoot({ onComplete }) {
   const bootSequence = [
     { text: "git init portfolio", delay: 100 },
     { text: "Initialized empty Git repository in C:/Users/akshi/OneDrive/Desktop/Akshith/Portfolio/.git/", delay: 300 },
-    { text: "git remote add origin https://github.com/sai-akshith/portfolio.git", delay: 500 },
+    { text: "git remote add origin https://github.com/akshithkendyala/Portfolio_Akshith.git", delay: 500 },
     { text: "git fetch origin", delay: 700 },
     { text: "remote: Enumerating objects: 247, done.", delay: 900 },
     { text: "remote: Counting objects: 100% (247/247), done.", delay: 1100 },
@@ -18,7 +18,7 @@ export default function TerminalBoot({ onComplete }) {
     { text: "Receiving objects:  85%", delay: 1650, isProgress: true, targetProgress: 85 },
     { text: "Receiving objects: 100% (247/247), 1.24 MiB | 4.86 MiB/s, done.", delay: 1850, targetProgress: 100 },
     { text: "Resolving deltas: 100% (112/112), done.", delay: 2050 },
-    { text: "From github.com/sai-akshith/portfolio", delay: 2200 },
+    { text: "From github.com/akshithkendyala/Portfolio_Akshith", delay: 2200 },
     { text: " * [new branch]      main     -> origin/main", delay: 2300 },
     { text: "git checkout main", delay: 2500 },
     { text: "Branch 'main' set up to track remote branch 'main' from 'origin'.", delay: 2700 },
@@ -73,7 +73,7 @@ export default function TerminalBoot({ onComplete }) {
             <span className="w-3 h-3 rounded-full bg-[#27C93F]" />
           </div>
           <span className="text-[#8B949E] text-xs mx-auto pr-6 font-semibold select-none">
-            sai-akshith@ubuntu: ~/portfolio
+            akshithkendyala@ubuntu: ~/portfolio
           </span>
         </div>
 
@@ -86,7 +86,7 @@ export default function TerminalBoot({ onComplete }) {
                 <div key={index} className="leading-relaxed break-all">
                   {isCommand ? (
                     <span>
-                      <span className="text-[#3FB950]">sai-akshith@ubuntu:~/portfolio$</span>{" "}
+                      <span className="text-[#3FB950]">akshithkendyala@ubuntu:~/portfolio$</span>{" "}
                       <span className="text-[#58A6FF]">{log}</span>
                     </span>
                   ) : (
@@ -99,7 +99,7 @@ export default function TerminalBoot({ onComplete }) {
             })}
             {logs.length < bootSequence.length && (
               <div className="flex items-center">
-                <span className="text-[#3FB950]">sai-akshith@ubuntu:~/portfolio$</span>
+                <span className="text-[#3FB950]">akshithkendyala@ubuntu:~/portfolio$</span>
                 <span className="terminal-cursor" />
               </div>
             )}

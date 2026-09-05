@@ -11,8 +11,8 @@ export default function Hero() {
   const terminalEndRef = useRef(null);
 
   const initialScript = [
-    { text: "git clone https://github.com/sai-akshith/portfolio.git", delay: 400, isCommand: true },
-    { text: "Cloning into 'portfolio'...", delay: 1000, isSystem: true },
+    { text: "git clone https://github.com/akshithkendyala/Portfolio_Akshith.git", delay: 400, isCommand: true },
+    { text: "Cloning into 'Portfolio_Akshith'...", delay: 1000, isSystem: true },
     { text: "remote: Enumerating objects: 100% (247/247), done.", delay: 1500, isSystem: true },
     { text: "remote: Compressing objects: 100% (180/180), done.", delay: 1800, isSystem: true },
     { text: "Receiving objects: 100% (247/247), 1.24 MiB | 5.2 MB/s, done.", delay: 2100, isSystem: true },
@@ -133,7 +133,7 @@ export default function Hero() {
   }, []);
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText("git clone https://github.com/sai-akshith/portfolio.git");
+    navigator.clipboard.writeText("git clone https://github.com/akshithkendyala/Portfolio_Akshith.git");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -251,7 +251,7 @@ export default function Hero() {
         {/* Quick copy clone prompt */}
         <div className="flex items-center space-x-2 bg-[#161B22] border border-[#30363D] px-3.5 py-2 rounded-lg mb-8 font-mono text-xs text-[#8B949E] shadow-lg max-w-full overflow-x-auto whitespace-nowrap">
           <span className="text-[#3FB950] font-semibold">$</span>
-          <span className="text-[#C9D1D9] overflow-x-auto">git clone https://github.com/sai-akshith/portfolio.git</span>
+          <span className="text-[#C9D1D9] overflow-x-auto">git clone https://github.com/akshithkendyala/Portfolio_Akshith.git</span>
           <button 
             onClick={copyToClipboard}
             className="p-1 hover:text-[#C9D1D9] transition-colors ml-2"
@@ -283,7 +283,7 @@ export default function Hero() {
               if (line.isCommand) {
                 return (
                   <div key={index} className="flex items-start">
-                    <span className="text-[#3FB950] mr-2 shrink-0">sai-akshith:~$</span>
+                    <span className="text-[#3FB950] mr-2 shrink-0">akshithkendyala:~$</span>
                     <span className="text-[#58A6FF] break-all">{line.text}</span>
                   </div>
                 );
@@ -302,7 +302,7 @@ export default function Hero() {
 
           {/* Terminal Form Input */}
           <form onSubmit={handleCommandSubmit} className="bg-[#0D1117] border-t border-[#30363D] px-4 py-3 flex items-center">
-            <span className="text-[#3FB950] font-mono text-sm mr-2 shrink-0 select-none">sai-akshith:~$</span>
+            <span className="text-[#3FB950] font-mono text-sm mr-2 shrink-0 select-none">akshithkendyala:~$</span>
             <input
               type="text"
               value={cmdInput}
