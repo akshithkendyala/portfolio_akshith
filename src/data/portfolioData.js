@@ -1,7 +1,7 @@
 // Data model representing the developer's career repository
 export const developerProfile = {
   name: "Sai Akshith Kendyala",
-  title: "Software & AI Developer",
+  title: "Software & AI Developer (SDE)",
   subtitle: "AI & Full Stack Enthusiast",
   bio: "Building production-ready AI pipelines, scalable microservices, and immersive frontends. Focused on solving real-world challenges through elegant, high-throughput software design.",
   location: "Hyderabad, India",

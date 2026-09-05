@@ -73,7 +73,7 @@ export default function About() {
       </div>
 
       <div ref={cardRef} className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-        
+
         {/* GitHub Styled Commit Card */}
         <div className="lg:col-span-7 border border-[#30363D] bg-[#161B22] rounded-lg shadow-xl overflow-hidden flex flex-col justify-between">
           <div className="bg-[#21262D] px-4 py-3 flex items-center justify-between border-b border-[#30363D]">
@@ -88,15 +88,15 @@ export default function About() {
 
           <div className="p-6 md:p-8 space-y-6 font-sans text-[#C9D1D9] leading-relaxed text-base">
             <h3 className="text-xl font-bold text-[#F0F6FC] font-mono">
-              Hi, I'm Sai Akshith
+              Hi, I'm Sai Akshith Kendyala
             </h3>
             <p>
-              I am a dedicated Software Engineer specializing in **Artificial Intelligence** and **Full Stack Development**. 
-              My programming journey started with curiosity about how algorithms could make intelligent decisions, 
+              I am a dedicated Software Engineer specializing in Artificial Intelligence and Full Stack Development.
+              My programming journey started with curiosity about how algorithms could make intelligent decisions,
               leading me to deep dive into machine learning frameworks, data processing backends, and responsive user experiences.
             </p>
             <p>
-              Currently, I focus on building high-performance ML pipelines, training convolutional and transformer networks, 
+              Currently, I focus on building high-performance ML pipelines, training convolutional and transformer networks,
               and crafting robust backend services. I love bridging the gap between theoretical AI models and production-ready applications.
             </p>
 
@@ -119,39 +119,39 @@ export default function About() {
             <Code className="h-4 w-4 mr-2" />
             <span>developer.json</span>
           </div>
-          
+
           <div ref={codeRef} className="p-6 flex-1 font-mono text-xs md:text-sm bg-[#0a0a0a] overflow-auto select-none">
-            <div className="code-line text-zinc-500">// Initialize profile configuration</div>
+            <div className="code-line text-zinc-500">// Profile configuration</div>
             <div className="code-line"><span className="text-[#F78166]">{`{`}</span></div>
-            
+
             <div className="code-line pl-4">
               <span className="text-[#79C0FF]">"name"</span>: <span className="text-[#A5D6FF]">"{jsonSnippet.name}"</span>,
             </div>
-            
+
             <div className="code-line pl-4">
               <span className="text-[#79C0FF]">"role"</span>: <span className="text-[#A5D6FF]">"{jsonSnippet.role}"</span>,
             </div>
-            
+
             <div className="code-line pl-4">
               <span className="text-[#79C0FF]">"focus"</span>: <span className="text-[#A5D6FF]">"{jsonSnippet.focus}"</span>,
             </div>
-            
+
             <div className="code-line pl-4">
               <span className="text-[#79C0FF]">"stack"</span>: <span className="text-[#F78166]">{`[`}</span>
             </div>
-            
+
             {jsonSnippet.stack.map((tech, idx) => (
               <div key={idx} className="code-line pl-8 text-[#A5D6FF]">
                 "{tech}"{idx < jsonSnippet.stack.length - 1 ? "," : ""}
               </div>
             ))}
-            
+
             <div className="code-line pl-4"><span className="text-[#F78166]">{`]`}</span>,</div>
-            
+
             <div className="code-line pl-4">
               <span className="text-[#79C0FF]">"motto"</span>: <span className="text-[#A5D6FF]">"{jsonSnippet.motto}"</span>
             </div>
-            
+
             <div className="code-line"><span className="text-[#F78166]">{`}`}</span></div>
           </div>
         </div>
