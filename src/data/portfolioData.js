@@ -14,20 +14,6 @@ export const developerProfile = {
 
 export const codingProfiles = [
   {
-    id: "github",
-    name: "GitHub",
-    handle: "akshithkendyala",
-    url: "https://github.com/akshithkendyala",
-    stats: { repositories: 20, contributions: "111+", stars: 5, followers: 2 },
-    languages: [
-      { name: "Python", percent: 55, color: "#3572A5" },
-      { name: "TypeScript", percent: 25, color: "#3178C6" },
-      { name: "C++", percent: 15, color: "#f34b7d" },
-      { name: "JavaScript", percent: 5, color: "#f1e05a" }
-    ],
-    activityPattern: [0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
-  },
-  {
     id: "leetcode",
     name: "LeetCode",
     handle: "JEUlQ5Wqzu",
@@ -36,46 +22,7 @@ export const codingProfiles = [
     languages: [
       { name: "C++", percent: 85, color: "#f34b7d" },
       { name: "Python", percent: 15, color: "#3572A5" }
-    ],
-    activityPattern: [1, 3, 2, 0, 1, 0, 3, 1, 1, 3, 1, 1, 1, 4, 8, 2, 1, 13, 1, 1, 1, 4, 1, 1]
-  },
-  {
-    id: "linkedin",
-    name: "LinkedIn",
-    handle: "sai-akshith-kendyala",
-    url: "https://www.linkedin.com/in/sai-akshith-kendyala-309205360/",
-    stats: { connections: "500+", network: "Active", role: "SDE / AI", status: "Open to Work" },
-    languages: [
-      { name: "Python", percent: 40, color: "#3572A5" },
-      { name: "React / Next", percent: 35, color: "#61dafb" },
-      { name: "PyTorch", percent: 25, color: "#ee4c2c" }
-    ],
-    activityPattern: [4, 6, 5, 8, 3, 7, 6, 9, 5, 7, 8, 4, 6, 8, 7, 5, 9, 8, 6, 7, 8, 9, 6, 8]
-  },
-  {
-    id: "codechef",
-    name: "CodeChef",
-    handle: "akshith_ken",
-    url: "https://www.codechef.com/users/akshith_ken",
-    stats: { rating: "1450+", division: "Div 3", stars: "2 ★", solved: "45+" },
-    languages: [
-      { name: "C++", percent: 85, color: "#f34b7d" },
-      { name: "Python", percent: 15, color: "#3572A5" }
-    ],
-    activityPattern: [2, 0, 1, 3, 0, 2, 0, 1, 2, 0, 3, 1, 0, 2, 0, 1, 0, 3, 1, 2, 0, 1, 2, 0]
-  },
-  {
-    id: "hackerrank",
-    name: "HackerRank",
-    handle: "akshithkendyala",
-    url: "https://www.hackerrank.com/profile/akshithkendyala",
-    stats: { problemSolving: "5 ★", python: "5 ★", cpp: "5 ★", sql: "4 ★" },
-    languages: [
-      { name: "Python", percent: 45, color: "#3572A5" },
-      { name: "C++", percent: 35, color: "#f34b7d" },
-      { name: "SQL", percent: 20, color: "#e38c00" }
-    ],
-    activityPattern: [4, 3, 5, 2, 6, 1, 5, 3, 4, 5, 2, 6, 1, 5, 3, 4, 5, 2, 6, 1, 5, 3, 4, 5]
+    ]
   },
   {
     id: "geeksforgeeks",
@@ -87,8 +34,55 @@ export const codingProfiles = [
       { name: "C++", percent: 70, color: "#f34b7d" },
       { name: "Python", percent: 20, color: "#3572A5" },
       { name: "Java", percent: 10, color: "#b07219" }
-    ],
-    activityPattern: [3, 2, 4, 1, 5, 2, 0, 1, 3, 4, 2, 5, 1, 0, 3, 2, 4, 1, 5, 2, 0, 1, 3, 4]
+    ]
+  },
+  {
+    id: "linkedin",
+    name: "LinkedIn",
+    handle: "sai-akshith-kendyala",
+    url: "https://www.linkedin.com/in/sai-akshith-kendyala-309205360/",
+    stats: { connections: "500+", network: "Active", role: "SDE / AI", status: "Open to Work" },
+    languages: [
+      { name: "Python", percent: 40, color: "#3572A5" },
+      { name: "React / Next", percent: 35, color: "#61dafb" },
+      { name: "PyTorch", percent: 25, color: "#ee4c2c" }
+    ]
+  },
+  {
+    id: "github",
+    name: "GitHub",
+    handle: "akshithkendyala",
+    url: "https://github.com/akshithkendyala",
+    stats: { repositories: 20, contributions: "111+", stars: 5, followers: 2 },
+    languages: [
+      { name: "Python", percent: 55, color: "#3572A5" },
+      { name: "TypeScript", percent: 25, color: "#3178C6" },
+      { name: "C++", percent: 15, color: "#f34b7d" },
+      { name: "JavaScript", percent: 5, color: "#f1e05a" }
+    ]
+  },
+  {
+    id: "codechef",
+    name: "CodeChef",
+    handle: "akshith_ken",
+    url: "https://www.codechef.com/users/akshith_ken",
+    stats: { rating: "1450+", division: "Div 3", stars: "2 ★", solved: "45+" },
+    languages: [
+      { name: "C++", percent: 85, color: "#f34b7d" },
+      { name: "Python", percent: 15, color: "#3572A5" }
+    ]
+  },
+  {
+    id: "hackerrank",
+    name: "HackerRank",
+    handle: "akshithkendyala",
+    url: "https://www.hackerrank.com/profile/akshithkendyala",
+    stats: { problemSolving: "5 ★", python: "5 ★", cpp: "5 ★", sql: "4 ★" },
+    languages: [
+      { name: "Python", percent: 45, color: "#3572A5" },
+      { name: "C++", percent: 35, color: "#f34b7d" },
+      { name: "SQL", percent: 20, color: "#e38c00" }
+    ]
   }
 ];
 

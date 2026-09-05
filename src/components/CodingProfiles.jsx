@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState, useCallback } from "react";
-import { GitFork, Star, Globe, RefreshCw, ExternalLink, Activity, CheckCircle2, Zap } from "lucide-react";
+import { GitFork, Star, Globe, RefreshCw, ExternalLink, Zap } from "lucide-react";
 import { codingProfiles } from "../data/portfolioData";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -43,30 +43,11 @@ function Counter({ value }) {
   return <span ref={containerRef}>{displayValue}</span>;
 }
 
-// Generate default 24-day grid dates
-function generateDefaultGrid(pattern = []) {
-  const grid = [];
-  const now = new Date();
-  for (let i = 23; i >= 0; i--) {
-    const d = new Date(now);
-    d.setDate(d.getDate() - i);
-    const dateFormatted = d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-    const level = pattern[23 - i] ?? 0;
-    grid.push({
-      date: dateFormatted,
-      count: level,
-      level: level === 0 ? 0 : Math.min(Math.ceil(level / 2), 4)
-    });
-  }
-  return grid;
-}
-
 export default function CodingProfiles() {
   const cardsRef = useRef([]);
   const [profiles, setProfiles] = useState(() => {
     return codingProfiles.map(p => ({
       ...p,
-      activityGrid: generateDefaultGrid(p.activityPattern),
       isLiveSynced: false
     }));
   });
@@ -91,7 +72,6 @@ export default function CodingProfiles() {
           let stars = 0;
           let topLanguages = [];
           let liveContributions = "111+";
-          let ghGrid = null;
 
           if (userRes.status === "fulfilled" && userRes.value.ok) {
             const userData = await userRes.value.json();
@@ -140,17 +120,6 @@ export default function CodingProfiles() {
             if (contribData && contribData.total && contribData.total.lastYear !== undefined) {
               liveContributions = `${contribData.total.lastYear}+`;
             }
-            if (contribData && Array.isArray(contribData.contributions)) {
-              const last24 = contribData.contributions.slice(-24);
-              ghGrid = last24.map(day => {
-                const d = new Date(day.date);
-                return {
-                  date: d.toLocaleDateString("en-US", { month: "short", day: "numeric" }),
-                  count: day.count,
-                  level: day.level
-                };
-              });
-            }
           }
 
           return {
@@ -159,8 +128,7 @@ export default function CodingProfiles() {
             followers,
             stars: stars > 0 ? stars : 5,
             liveContributions,
-            languages: topLanguages.length > 0 ? topLanguages : null,
-            activityGrid: ghGrid
+            languages: topLanguages.length > 0 ? topLanguages : null
           };
         } catch (err) {
           console.warn("GitHub live sync fallback active:", err);
@@ -180,56 +148,13 @@ export default function CodingProfiles() {
             const easy = data.easySolved ?? 56;
             const medium = data.mediumSolved ?? 47;
             const hard = data.hardSolved ?? 3;
-            const ranking = data.ranking ? `#${Number(data.ranking).toLocaleString()}` : "Top 15%";
-
-            // Parse submission calendar to build real 24-day activity streak
-            const subCal = data.submissionCalendar || {};
-            const grid = [];
-            const now = new Date();
-
-            for (let i = 23; i >= 0; i--) {
-              const d = new Date(now);
-              d.setDate(d.getDate() - i);
-              d.setHours(0, 0, 0, 0);
-              const dayStartSec = Math.floor(d.getTime() / 1000);
-              const dayEndSec = dayStartSec + 86400;
-
-              let count = 0;
-              for (const [timestampStr, num] of Object.entries(subCal)) {
-                const ts = parseInt(timestampStr, 10);
-                if (ts >= dayStartSec && ts < dayEndSec) {
-                  count += num;
-                }
-              }
-
-              // Fallback match by UTC string if exact second timestamp falls across midnight offset
-              if (count === 0) {
-                const dateStr = d.toISOString().split("T")[0];
-                for (const [timestampStr, num] of Object.entries(subCal)) {
-                  const ts = parseInt(timestampStr, 10);
-                  const subDateStr = new Date(ts * 1000).toISOString().split("T")[0];
-                  if (dateStr === subDateStr) {
-                    count += num;
-                  }
-                }
-              }
-
-              const dateFormatted = d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-              grid.push({
-                date: dateFormatted,
-                count: count,
-                level: count === 0 ? 0 : Math.min(Math.ceil(count / 2), 4)
-              });
-            }
 
             return {
               id: "leetcode",
               solved: `${totalSolved}+`,
               easy: `${easy}`,
               medium: `${medium}`,
-              hard: `${hard}`,
-              ranking,
-              activityGrid: grid
+              hard: `${hard}`
             };
           }
         } catch (err) {
@@ -254,8 +179,7 @@ export default function CodingProfiles() {
                 stars: ghData.stars ?? p.stats.stars,
                 followers: ghData.followers ?? p.stats.followers
               },
-              languages: ghData.languages || p.languages,
-              activityGrid: ghData.activityGrid || p.activityGrid
+              languages: ghData.languages || p.languages
             };
           }
 
@@ -269,8 +193,7 @@ export default function CodingProfiles() {
                 easy: lcData.easy,
                 medium: lcData.medium,
                 hard: lcData.hard
-              },
-              activityGrid: lcData.activityGrid || p.activityGrid
+              }
             };
           }
 
@@ -398,7 +321,7 @@ export default function CodingProfiles() {
               </div>
 
               {/* Body */}
-              <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+              <div className="p-6 flex-1 flex flex-col justify-between space-y-6">
                 <div>
                   <div className="flex items-center justify-between">
                     <h3 className="font-mono text-base font-bold text-[#58A6FF] flex items-center group-hover:underline">
@@ -411,9 +334,9 @@ export default function CodingProfiles() {
                   </div>
 
                   {/* Stats list */}
-                  <div className="grid grid-cols-2 gap-3 mt-4 text-xs font-mono border-t border-[#30363D]/40 pt-3">
+                  <div className="grid grid-cols-2 gap-4 mt-5 text-xs font-mono border-t border-[#30363D]/50 pt-4">
                     {Object.entries(profile.stats).slice(0, 4).map(([key, val]) => (
-                      <div key={key} className="flex flex-col">
+                      <div key={key} className="flex flex-col space-y-0.5">
                         <span className="text-[#8B949E] capitalize">{key.replace(/([A-Z])/g, " $1")}</span>
                         <span className="text-[#F0F6FC] font-semibold text-sm">
                           <Counter value={val} />
@@ -424,8 +347,8 @@ export default function CodingProfiles() {
                 </div>
 
                 {/* Languages breakdown bar */}
-                <div>
-                  <div className="h-1.5 w-full bg-[#30363D] rounded-full overflow-hidden flex">
+                <div className="border-t border-[#30363D]/40 pt-4">
+                  <div className="h-2 w-full bg-[#30363D] rounded-full overflow-hidden flex">
                     {profile.languages.map((lang, lIdx) => (
                       <div
                         key={lIdx}
@@ -438,53 +361,17 @@ export default function CodingProfiles() {
                       />
                     ))}
                   </div>
-                  <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2">
-                    {profile.languages.slice(0, 3).map((lang, lIdx) => (
-                      <div key={lIdx} className="flex items-center space-x-1.5 text-[10px] font-mono text-[#8B949E]">
+                  <div className="flex flex-wrap gap-x-3 gap-y-1.5 mt-2.5">
+                    {profile.languages.slice(0, 4).map((lang, lIdx) => (
+                      <div key={lIdx} className="flex items-center space-x-1.5 text-[11px] font-mono text-[#8B949E]">
                         <span
-                          className="w-2.5 h-2.5 rounded-full inline-block"
+                          className="w-2.5 h-2.5 rounded-full inline-block shrink-0"
                           style={{ backgroundColor: lang.color }}
                         />
                         <span>{lang.name}</span>
                         <span className="text-[#C9D1D9] font-medium">{lang.percent}%</span>
                       </div>
                     ))}
-                  </div>
-                </div>
-
-                {/* 24-Day Real-Time Activity Grid */}
-                <div className="border-t border-[#30363D]/40 pt-3">
-                  <div className="flex items-center justify-between text-[10px] font-mono text-[#8B949E] mb-1.5">
-                    <span>Recent activity</span>
-                    <span className="flex items-center space-x-1">
-                      <span>Less</span>
-                      <span className="inline-block w-2 h-2 rounded-[1px] bg-[#161B22] border border-[#30363D]" />
-                      <span className="inline-block w-2 h-2 rounded-[1px] bg-[#0e4429]" />
-                      <span className="inline-block w-2 h-2 rounded-[1px] bg-[#006d32]" />
-                      <span className="inline-block w-2 h-2 rounded-[1px] bg-[#26a641]" />
-                      <span className="inline-block w-2 h-2 rounded-[1px] bg-[#39d353]" />
-                      <span>More</span>
-                    </span>
-                  </div>
-
-                  <div className="grid grid-cols-12 gap-1.5">
-                    {profile.activityGrid.map((item, actIdx) => {
-                      let bgClass = "bg-[#161B22] border-[#30363D]/40";
-                      if (item.level === 1) bgClass = "bg-[#0e4429] border-[#0e4429]";
-                      else if (item.level === 2) bgClass = "bg-[#006d32] border-[#006d32]";
-                      else if (item.level === 3) bgClass = "bg-[#26a641] border-[#26a641]";
-                      else if (item.level >= 4) bgClass = "bg-[#39d353] border-[#39d353] shadow-[0_0_8px_rgba(57,211,83,0.4)]";
-
-                      const tooltipText = `${item.date}: ${item.count} ${profile.id === "leetcode" ? "problems solved" : "contributions"}`;
-
-                      return (
-                        <div
-                          key={actIdx}
-                          className={`w-full aspect-square rounded-[2px] border ${bgClass} hover:scale-125 transition-transform duration-150 relative cursor-pointer group/cell`}
-                          title={tooltipText}
-                        />
-                      );
-                    })}
                   </div>
                 </div>
               </div>
@@ -495,4 +382,5 @@ export default function CodingProfiles() {
     </section>
   );
 }
+
 
