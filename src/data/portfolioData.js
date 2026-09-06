@@ -245,20 +245,11 @@ export const projects = [
 
 export const educationHistory = [
   {
-    version: "v4.0",
-    stage: "Future Goals",
-    title: "Master's & Advanced AI Research",
-    institution: "Top Global Universities",
-    period: "2026 and Beyond",
-    details: "Aspiring to specialize in deep neural networks, multimodal learning representation, and core generative AI alignment.",
-    badgeColor: "bg-purple-950 text-purple-300 border-purple-800"
-  },
-  {
     version: "v3.0",
     stage: "Bachelor of Technology",
     title: "Computer Science & Engineering",
     institution: "Vardhaman College of Engineering (VCE)",
-    period: "2022 - 2026",
+    period: "2024 - 2028",
     details: "Focused on Algorithms, Deep Learning, Databases, and Software Architectures. Active member of competitive coding clubs.",
     badgeColor: "bg-green-950 text-green-300 border-green-800"
   },
@@ -266,17 +257,26 @@ export const educationHistory = [
     version: "v2.0",
     stage: "Intermediate Education",
     title: "MPC (Maths, Physics, Chemistry)",
-    institution: "Sri Chaitanya Junior College",
-    period: "2020 - 2022",
+    institution: "Narayana Junior College",
+    period: "2022 - 2024",
     details: "Strong fundamental grounding in Mathematics, Physics, and analytical logic. Achieved top marks in competitive engineering entrance tests.",
     badgeColor: "bg-blue-950 text-blue-300 border-blue-800"
   },
   {
+    version: "v1.1",
+    stage: "Schooling",
+    title: "Secondary Schooling",
+    institution: "Narayana High School",
+    period: "2020 - 2022",
+    details: "Introduced to software logic via scratch programming, HTML, and basic computational models. Cultivated lifelong curiosity.",
+    badgeColor: "bg-zinc-800 text-zinc-300 border-zinc-700"
+  },
+  {
     version: "v1.0",
     stage: "Schooling",
-    title: "Secondary School Certificate",
-    institution: "Silver Oaks International School",
-    period: "2010 - 2020",
+    title: "Primary Schooling",
+    institution: "Narayana High School",
+    period: "2012 - 2020",
     details: "Introduced to software logic via scratch programming, HTML, and basic computational models. Cultivated lifelong curiosity.",
     badgeColor: "bg-zinc-800 text-zinc-300 border-zinc-700"
   }

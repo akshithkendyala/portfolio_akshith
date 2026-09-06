@@ -100,7 +100,7 @@ export default function Education() {
                   <span className="text-[#F0F6FC] font-semibold">{edu.stage}</span>
                 </div>
                 <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border ${edu.badgeColor || "bg-zinc-800 text-zinc-300 border-zinc-700"} select-none`}>
-                  {edu.version === "v4.0" ? "Pre-release" : "Latest Release"}
+                  {edu.releaseType || (index === 0 ? "Latest Release" : "Previous Release")}
                 </span>
               </div>
 
