@@ -19,45 +19,95 @@ export default function Navbar() {
   ];
 
   useEffect(() => {
-    // Detect scroll for header shadowing
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
+    let ticking = false;
 
-    // Setup IntersectionObserver for active section tracking
-    const observerOptions = {
-      root: null,
-      rootMargin: "-20% 0px -60% 0px", // triggers when section is in middle viewport
-      threshold: 0.1
-    };
+    const updateActiveSection = () => {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
 
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
+      // Detect scroll for header shadowing
+      setScrolled(scrollY > 20);
+
+      // 1. If reached bottom of page, highlight the last section (contact)
+      if (scrollY + windowHeight >= documentHeight - 60) {
+        setActiveSection("contact");
+        ticking = false;
+        return;
+      }
+
+      // 2. If at the very top (hero/banner area), default to "about"
+      if (scrollY < 120) {
+        setActiveSection("about");
+        ticking = false;
+        return;
+      }
+
+      // 3. Find active section based on vertical viewport position
+      // Detection offset line ~ 130px from the top of the viewport (below sticky navbar)
+      const detectionPoint = 130;
+      let currentActive = null;
+
+      for (let i = 0; i < navItems.length; i++) {
+        const item = navItems[i];
+        const el = document.getElementById(item.id);
+        if (!el) continue;
+
+        const rect = el.getBoundingClientRect();
+        // A section is active if its top is above/at the detection point and bottom is below it
+        if (rect.top <= detectionPoint && rect.bottom > detectionPoint) {
+          currentActive = item.id;
+          break;
         }
-      });
+      }
+
+      // Fallback: Find the closest section above detection line
+      if (!currentActive) {
+        for (let i = navItems.length - 1; i >= 0; i--) {
+          const item = navItems[i];
+          const el = document.getElementById(item.id);
+          if (!el) continue;
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= detectionPoint) {
+            currentActive = item.id;
+            break;
+          }
+        }
+      }
+
+      if (currentActive) {
+        setActiveSection(currentActive);
+      }
+
+      ticking = false;
     };
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-    navItems.forEach((item) => {
-      const el = document.getElementById(item.id);
-      if (el) observer.observe(el);
-    });
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateActiveSection);
+        ticking = true;
+      }
+    };
+
+    // Initial check on mount
+    updateActiveSection();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      observer.disconnect();
+      window.removeEventListener("resize", handleScroll);
     };
   }, []);
 
   const handleNavClick = (e, id) => {
     e.preventDefault();
     setMobileMenuOpen(false);
+    setActiveSection(id);
     const element = document.getElementById(id);
     if (element) {
-      const offset = 80; // height of sticky navbar
+      const offset = 70; // height of sticky navbar
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -157,11 +207,11 @@ export default function Navbar() {
                   onClick={(e) => handleNavClick(e, item.id)}
                   className={`flex items-center space-x-3 px-4 py-3 rounded-md text-sm font-medium transition-colors ${
                     isActive
-                      ? "bg-[#21262D] text-[#3FB950] border-l-4 border-[#3FB950]"
+                      ? "bg-[#21262D] text-[#F78166] border-l-4 border-[#F78166]"
                       : "text-[#8B949E] hover:bg-[#30363D]/20 hover:text-[#C9D1D9]"
                   }`}
                 >
-                  <Icon className={`h-4.5 w-4.5 ${isActive ? "text-[#3FB950]" : "text-[#8B949E]"}`} />
+                  <Icon className={`h-4.5 w-4.5 ${isActive ? "text-[#F78166]" : "text-[#8B949E]"}`} />
                   <span>{item.label}</span>
                 </a>
               );
