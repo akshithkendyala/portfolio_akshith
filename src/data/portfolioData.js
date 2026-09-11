@@ -250,7 +250,7 @@ export const educationHistory = [
     title: "Computer Science & Engineering",
     institution: "Vardhaman College of Engineering (VCE)",
     period: "2024 - 2028",
-    details: "Focused on Algorithms, Deep Learning, Databases, and Software Architectures. Active member of competitive coding clubs.",
+    details: "Deepening expertise in data structures, algorithms, deep learning, and robust software architectures. Actively collaborating in competitive programming environments to sharpen real-time problem-solving skills and algorithmic efficiency.",
     badgeColor: "bg-green-950 text-green-300 border-green-800"
   },
   {
@@ -259,7 +259,7 @@ export const educationHistory = [
     title: "MPC (Maths, Physics, Chemistry)",
     institution: "Narayana Junior College",
     period: "2022 - 2024",
-    details: "Strong fundamental grounding in Mathematics, Physics, and analytical logic. Achieved top marks in competitive engineering entrance tests.",
+    details: "Built a rigorous foundation in advanced mathematics and analytical physics. Developed strong logical reasoning frameworks, culminating in high-ranking performance across highly competitive engineering entrance examinations.",
     badgeColor: "bg-blue-950 text-blue-300 border-blue-800"
   },
   {
@@ -268,16 +268,16 @@ export const educationHistory = [
     title: "Secondary Schooling",
     institution: "Narayana High School",
     period: "2020 - 2022",
-    details: "Introduced to software logic via scratch programming, HTML, and basic computational models. Cultivated lifelong curiosity.",
+    details: "Transitioned into complex academic curriculums while expanding technical fundamentals. Focused on structured problem-solving, logic building, and foundational computer sciences to prepare for intensive analytical streams.",
     badgeColor: "bg-zinc-800 text-zinc-300 border-zinc-700"
   },
   {
     version: "v1.0",
     stage: "Schooling",
     title: "Primary Schooling",
-    institution: "Narayana High School",
+    institution: "St. Aloysius High School",
     period: "2012 - 2020",
-    details: "Introduced to software logic via scratch programming, HTML, and basic computational models. Cultivated lifelong curiosity.",
+    details: "First introduced to the digital world through Scratch programming, basic HTML, and early computational design. Cultivated a lifelong curiosity for technology, logic, and how software systems function.",
     badgeColor: "bg-zinc-800 text-zinc-300 border-zinc-700"
   }
 ];
