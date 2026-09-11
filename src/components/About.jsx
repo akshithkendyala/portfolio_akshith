@@ -65,9 +65,9 @@ export default function About() {
           <GitCommit className="h-6 w-6 text-[#3FB950] animate-pulse" />
         </div>
         <div>
-          <span className="font-mono text-xs text-[#8B949E] uppercase tracking-wider">Commit 01</span>
+          <span className="font-mono text-xs text-[#8B949E] uppercase tracking-wider">INITIAL COMMIT</span>
           <h2 className="font-mono text-xl md:text-2xl font-bold text-[#F0F6FC] leading-none mt-1">
-            "Initial Commit: About Me"
+            "About Me"
           </h2>
         </div>
       </div>

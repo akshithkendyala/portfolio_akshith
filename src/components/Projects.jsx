@@ -16,21 +16,21 @@ function TiltCard({ children, className }) {
   const handleMouseMove = (e) => {
     const card = cardRef.current;
     if (!card) return;
-    
+
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left; // x position within element
     const y = e.clientY - rect.top;  // y position within element
-    
+
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    
+
     // Max rotation angles (degrees)
     const maxRotateX = 8;
     const maxRotateY = 8;
-    
+
     const rotateX = ((centerY - y) / centerY) * maxRotateX;
     const rotateY = ((x - centerX) / centerX) * maxRotateY;
-    
+
     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
   };
 
@@ -61,14 +61,14 @@ export default function Projects() {
     // Reveal rows on scroll
     rowsRef.current.forEach((row, index) => {
       if (!row) return;
-      
+
       // Animate branch path drawing out
       const path = row.querySelector(".project-branch-path");
       if (path) {
         const length = path.getTotalLength();
         path.style.strokeDasharray = length;
         path.style.strokeDashoffset = length;
-        
+
         gsap.to(path, {
           strokeDashoffset: 0,
           duration: 1.2,
@@ -109,7 +109,7 @@ export default function Projects() {
         <div>
           <span className="font-mono text-xs text-[#8B949E] uppercase tracking-wider">Repository Showcase</span>
           <h2 className="font-mono text-xl md:text-2xl font-bold text-[#F0F6FC] leading-none mt-1">
-            "git branch --list"
+            "Featured Projects"
           </h2>
         </div>
       </div>
@@ -117,7 +117,7 @@ export default function Projects() {
       {/* Projects Timeline Stack */}
       <div className="space-y-16">
         {projects.map((project, index) => (
-          <div 
+          <div
             key={project.id}
             ref={el => rowsRef.current[index] = el}
             className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center"
@@ -127,14 +127,14 @@ export default function Projects() {
               <svg width="180" height="240" viewBox="0 0 180 240" className="w-full">
                 {/* Main vertical trunk */}
                 <line x1="40" y1="0" x2="40" y2="240" stroke="#8B949E" strokeWidth="4" />
-                
+
                 {/* Branch line split & merge */}
-                <path 
+                <path
                   className="project-branch-path"
-                  d="M 40 40 C 120 40, 140 80, 140 120 C 140 160, 120 200, 40 200" 
-                  stroke="#58A6FF" 
-                  strokeWidth="3.5" 
-                  fill="none" 
+                  d="M 40 40 C 120 40, 140 80, 140 120 C 140 160, 120 200, 40 200"
+                  stroke="#58A6FF"
+                  strokeWidth="3.5"
+                  fill="none"
                 />
 
                 {/* Commit nodes */}
@@ -151,7 +151,7 @@ export default function Projects() {
             {/* Right side: Expandable Projects Card */}
             <div className="lg:col-span-9">
               <TiltCard className="project-card border border-[#30363D] hover:border-[#3FB950]/50 bg-[#161B22] rounded-lg shadow-xl overflow-hidden flex flex-col justify-between">
-                
+
                 {/* Card Header (Repository File Header) */}
                 <div className="bg-[#21262D] px-5 py-4 border-b border-[#30363D] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
                   <div className="flex items-center space-x-2 font-mono text-sm">
@@ -169,7 +169,7 @@ export default function Projects() {
 
                 {/* Card Body */}
                 <div className="p-6 md:p-8 space-y-6">
-                  
+
                   {/* Title & Description */}
                   <div>
                     <h3 className="text-xl md:text-2xl font-sans font-bold text-[#F0F6FC] tracking-tight">
@@ -183,7 +183,7 @@ export default function Projects() {
                   {/* Tech stack */}
                   <div className="flex flex-wrap gap-2">
                     {project.techStack.map((tech) => (
-                      <span 
+                      <span
                         key={tech}
                         className="flex items-center space-x-1 px-3 py-1 bg-[#30363D]/50 border border-[#30363D] text-[#C9D1D9] font-mono text-xs rounded-full"
                       >
@@ -208,7 +208,7 @@ export default function Projects() {
 
                   {/* Links */}
                   <div className="flex items-center space-x-4 border-t border-[#30363D]/50 pt-5">
-                    <a 
+                    <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -218,7 +218,7 @@ export default function Projects() {
                       <span>View Source</span>
                     </a>
                     {project.liveDemoUrl !== "#" && (
-                      <a 
+                      <a
                         href={project.liveDemoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -244,20 +244,20 @@ export default function Projects() {
 // Temporary icon resolver
 function FolderGit2Icon({ className }) {
   return (
-    <svg 
-      xmlns="http://www.w3.org/2000/svg" 
-      viewBox="0 0 24 24" 
-      fill="none" 
-      stroke="currentColor" 
-      strokeWidth="2" 
-      strokeLinecap="round" 
-      strokeLinejoin="round" 
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       className={className}
     >
-      <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/>
-      <circle cx="12" cy="13" r="2"/>
-      <path d="M12 15v3"/>
-      <path d="M10 18h4"/>
+      <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z" />
+      <circle cx="12" cy="13" r="2" />
+      <path d="M12 15v3" />
+      <path d="M10 18h4" />
     </svg>
   );
 }

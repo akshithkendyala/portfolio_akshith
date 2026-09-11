@@ -82,7 +82,7 @@ export default function Contact() {
     // Attempt actual Web3Forms API dispatch
     try {
       const apiKey = developerProfile.web3formsKey || "YOUR_WEB3FORMS_ACCESS_KEY";
-      
+
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
@@ -179,13 +179,13 @@ export default function Contact() {
         <div>
           <span className="font-mono text-xs text-[#8B949E] uppercase tracking-wider">Deploy Portal</span>
           <h2 className="font-mono text-xl md:text-2xl font-bold text-[#F0F6FC] leading-none mt-1">
-            "git push origin main"
+            "Get In Touch"
           </h2>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-        
+
         {/* Left Column: Info Links */}
         <div className="lg:col-span-5 flex flex-col justify-between space-y-6 contact-cards">
           <div className="border border-[#30363D] bg-[#161B22] rounded-lg p-6 shadow-xl flex-1 flex flex-col justify-center space-y-4">
@@ -227,7 +227,7 @@ export default function Contact() {
         {/* Right Column: Interactive Push Form */}
         <div className="lg:col-span-7 contact-form-card">
           <div className="border border-[#30363D] bg-[#161B22] rounded-lg shadow-xl overflow-hidden flex flex-col justify-between h-full">
-            
+
             {/* Header */}
             <div className="bg-[#21262D] px-5 py-4 border-b border-[#30363D] flex items-center justify-between font-mono text-xs text-[#8B949E]">
               <span>deployment_form.sh</span>
@@ -304,7 +304,7 @@ export default function Contact() {
                   {pushLogs.map((log, index) => {
                     const isSuccess = log.includes("Done.") || log.includes("Push complete");
                     return (
-                      <div 
+                      <div
                         key={index}
                         className={isSuccess ? "text-[#3FB950] font-bold" : "text-[#8B949E]"}
                       >

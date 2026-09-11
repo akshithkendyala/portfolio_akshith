@@ -384,7 +384,7 @@ export default function CodingProfiles() {
           <div>
             <span className="font-mono text-xs text-[#8B949E] uppercase tracking-wider">Remote Repositories</span>
             <h2 className="font-mono text-xl md:text-2xl font-bold text-[#F0F6FC] leading-none mt-1">
-              "git remote -v"
+              "Coding Profiles"
             </h2>
           </div>
         </div>

@@ -46,33 +46,32 @@ export default function Experience() {
           <GitMerge className="h-6 w-6 text-[#BC8CFF]" />
         </div>
         <div>
-          <span className="font-mono text-xs text-[#8B949E] uppercase tracking-wider">Experience Logs</span>
+          <span className="font-mono text-xs text-[#8B949E] uppercase tracking-wider">CAREER TIMELINE</span>
           <h2 className="font-mono text-xl md:text-2xl font-bold text-[#F0F6FC] leading-none mt-1">
-            "git merge [feature-experience]"
+            "Work Experiences"
           </h2>
         </div>
       </div>
 
       {/* Timeline Spans */}
       <div className="relative border-l-2 border-[#30363D] ml-4 md:ml-8 pl-8 md:pl-12 space-y-12">
-        
+
         {experiences.map((exp, index) => {
           const isExpanded = expandedIndex === index;
-          
+
           return (
-            <div 
-              key={index} 
+            <div
+              key={index}
               ref={el => itemsRef.current[index] = el}
               className="relative group"
             >
-              
+
               {/* Timeline Merge Node (SVG/Icon representing Merge) */}
-              <div 
-                className={`absolute -left-[45px] md:-left-[61px] top-1 z-10 w-8 h-8 rounded-full border-2 flex items-center justify-center cursor-pointer transition-all duration-300 ${
-                  isExpanded 
-                    ? "bg-[#6F42C1] border-[#8A63D2] shadow-[0_0_8px_#BC8CFF]" 
+              <div
+                className={`absolute -left-[45px] md:-left-[61px] top-1 z-10 w-8 h-8 rounded-full border-2 flex items-center justify-center cursor-pointer transition-all duration-300 ${isExpanded
+                    ? "bg-[#6F42C1] border-[#8A63D2] shadow-[0_0_8px_#BC8CFF]"
                     : "bg-[#161B22] border-[#30363D] group-hover:border-[#BC8CFF]"
-                }`}
+                  }`}
                 onClick={() => toggleExpand(index)}
                 title="Click to toggle merge details"
               >
@@ -84,12 +83,12 @@ export default function Experience() {
               </div>
 
               {/* Merge Title Block */}
-              <div 
+              <div
                 className="border border-[#30363D] bg-[#161B22] rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:border-[#8B949E]/40"
               >
-                
+
                 {/* Header Summary */}
-                <div 
+                <div
                   className="bg-[#21262D] px-5 py-4 flex items-center justify-between cursor-pointer select-none"
                   onClick={() => toggleExpand(index)}
                 >
@@ -109,10 +108,9 @@ export default function Experience() {
                 </div>
 
                 {/* Collapsible Body */}
-                <div 
-                  className={`transition-all duration-300 overflow-hidden ${
-                    isExpanded ? "max-h-[800px] border-t border-[#30363D]/60" : "max-h-0"
-                  }`}
+                <div
+                  className={`transition-all duration-300 overflow-hidden ${isExpanded ? "max-h-[800px] border-t border-[#30363D]/60" : "max-h-0"
+                    }`}
                 >
                   <div className="p-5 md:p-6 space-y-6">
                     {/* Meta info */}
@@ -139,8 +137,8 @@ export default function Experience() {
                       </div>
                       <div className="bg-[#0D1117] border border-[#30363D] rounded-md font-mono text-xs md:text-sm p-4 overflow-x-auto space-y-2 select-none">
                         {exp.details.map((detail, dIdx) => (
-                          <div 
-                            key={dIdx} 
+                          <div
+                            key={dIdx}
                             className="flex items-start text-[#3FB950] bg-[#2ea44f]/5 px-2 py-1.5 rounded border-l-4 border-[#3FB950] leading-relaxed break-words"
                           >
                             <span className="font-bold mr-2.5 select-none shrink-0">+</span>

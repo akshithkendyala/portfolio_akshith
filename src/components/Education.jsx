@@ -65,23 +65,23 @@ export default function Education() {
         <div>
           <span className="font-mono text-xs text-[#8B949E] uppercase tracking-wider">Release Tags</span>
           <h2 className="font-mono text-xl md:text-2xl font-bold text-[#F0F6FC] leading-none mt-1">
-            "git tag -l"
+            "Education & Qualifications"
           </h2>
         </div>
       </div>
 
       {/* Releases container */}
       <div className="space-y-12 relative border-l-2 border-[#30363D] ml-5 md:ml-10 pl-8 md:pl-16">
-        
+
         {educationHistory.map((edu, index) => (
-          <div 
+          <div
             key={edu.version}
             ref={el => releasesRef.current[index] = el}
             className="relative"
           >
-            
+
             {/* Version tag badge (dropping item) */}
-            <div 
+            <div
               className={`absolute -left-[48px] md:-left-[84px] top-1 z-10 font-mono text-xs font-bold border rounded-full px-2.5 py-1.5 shadow-lg select-none release-tag-badge bg-[#161B22] border-[#30363D] text-[#3FB950] ${edu.version === "v3.0" ? "scale-110 ring-2 ring-[#3FB950]/30 shadow-[#3FB950]/20" : ""}`}
             >
               <div className="flex items-center space-x-1">
@@ -92,7 +92,7 @@ export default function Education() {
 
             {/* Release Description Card */}
             <div className="release-content border border-[#30363D] bg-[#161B22] rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:border-[#8B949E]/40">
-              
+
               {/* Header */}
               <div className="bg-[#21262D] px-5 py-4 border-b border-[#30363D] flex items-center justify-between">
                 <div className="flex items-center space-x-2 font-mono">
@@ -106,7 +106,7 @@ export default function Education() {
 
               {/* Body */}
               <div className="p-5 md:p-6 space-y-4">
-                
+
                 {/* Meta details */}
                 <div className="space-y-1">
                   <h3 className="text-lg font-bold text-[#F0F6FC]">
